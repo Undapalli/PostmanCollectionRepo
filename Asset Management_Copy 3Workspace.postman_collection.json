@@ -1,0 +1,492 @@
+{
+	"info": {
+		"_postman_id": "08a8813a-a96e-49a5-875c-81ea1d3e0369",
+		"name": "Asset Management_Copy Workspace",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27665370"
+	},
+	"item": [
+		{
+			"name": "Asset Type Copy",
+			"item": [
+				{
+					"name": "/asset-types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/asset-types",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"asset-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/asset-types",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate a random asset type\r",
+									"function generateRandomAssetType() {\r",
+									"    const assetTypeLength = Math.floor(Math.random() * 10) + 5; // Random length between 5 and 15 characters\r",
+									"    let randomAssetType = '';\r",
+									"\r",
+									"    for (let i = 0; i < assetTypeLength; i++) {\r",
+									"        const randomCharCode = Math.floor(Math.random() * 26) + 65; // Random uppercase letter ASCII code\r",
+									"        randomAssetType += String.fromCharCode(randomCharCode);\r",
+									"    }\r",
+									"\r",
+									"    return randomAssetType;\r",
+									"}\r",
+									"\r",
+									"// Generate a random asset type and store it in an environment variable\r",
+									"const randomAssetType = generateRandomAssetType();\r",
+									"pm.collectionVariables.set('AssetTypepost', randomAssetType);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJson = JSON.parse(responseBody);\r",
+									"var idValue = responseJson.id;\r",
+									"pm.collectionVariables.set(\"Assettypeid\", idValue);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"assetType\":\"{{AssetTypepost}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/asset-types",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"asset-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/asset-types/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/asset-types/{{Assettypeid}}",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"asset-types",
+								"{{Assettypeid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/asset-types/{id}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate a random asset type\r",
+									"function generateRandomAssetType() {\r",
+									"    const assetTypeLength = Math.floor(Math.random() * 10) + 5; // Random length between 5 and 15 characters\r",
+									"    let randomAssetType = '';\r",
+									"\r",
+									"    for (let i = 0; i < assetTypeLength; i++) {\r",
+									"        const randomCharCode = Math.floor(Math.random() * 26) + 65; // Random uppercase letter ASCII code\r",
+									"        randomAssetType += String.fromCharCode(randomCharCode);\r",
+									"    }\r",
+									"\r",
+									"    return randomAssetType;\r",
+									"}\r",
+									"\r",
+									"// Generate a random asset type and store it in an environment variable\r",
+									"const randomAssetType = generateRandomAssetType();\r",
+									"pm.environment.set('assetTypePut', randomAssetType);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"assetType\":\"{{assetTypePut}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/asset-types/{{Assettypeid}}",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"asset-types",
+								"{{Assettypeid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/asset-types/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/asset-types/{{Assettypeid}}",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"asset-types",
+								"{{Assettypeid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Asset Copy",
+			"item": [
+				{
+					"name": "Get All Asset",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/assets",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Asset By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "{{CSCS-Authorization-Token}}",
+								"type": "text"
+							},
+							{
+								"key": "DCCODE",
+								"value": "CSCS",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/assets/{{Assetid}}",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"assets",
+								"{{Assetid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Asset",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJson = JSON.parse(responseBody);\r",
+									"var idValue = responseJson.id;\r",
+									"pm.collectionVariables.set(\"Assetid\", idValue);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"code\":\"{{$randomAlphaNumeric}}\",\r\n   \"deviceCode\":\"{{$randomAlphaNumeric}}\",\r\n   \"type\":\"{{AssetTypepost}}\",\r\n   \"status\":\"{{$randomAlphaNumeric}}\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/assets",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Asset",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"dcCode\": \"CSCS\",\r\n    \"code\": \"ASSET-x\",\r\n    \"type\": \"CRANE\",\r\n    \"deviceCode\": \"device09\",\r\n    \"plateNumber\": null,\r\n    \"identificationNumber\": null,\r\n    \"operatorFirst\": null,\r\n    \"operatorLast\": null,\r\n    \"status\": null,\r\n    \"locationCode\": null,\r\n    \"acquisitionDate\": null,\r\n    \"expDisposalDate\": null,\r\n    \"nextService\": null,\r\n    \"geofenceId\": 23,\r\n    \"latitude\": null,\r\n    \"longitude\": null,\r\n    \"geofence\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/assets/{{Assetid}}",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"assets",
+								"{{Assetid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Asset",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "CSCS-Authorization-Token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsImZpcnN0bmFtZSI6InNzdCIsIm9yZ05hbWUiOiJTU1QiLCJyb2xlcyI6IlNTVF9BRE1JTiIsInVzZXJJZCI6MTIsIm9yZ0lkIjoiMTQiLCJsYXN0bmFtZSI6InRlc3R1c2VyIiwiZ2xvYmFsT3JnQ29kZSI6Im51bGwiLCJvcmdDb2RlIjoiU1NUIiwicGVybWlzc2lvbnMiOiIiLCJ1c2VyVHlwZSI6MCwiZXhwIjoxNjkzNDk5OTY4NDY3LCJlbWFpbCI6InNzdC10ZXN0dXNlckBjc2NzLmlvIiwidXNlcm5hbWUiOiJzc3QtdGVzdHVzZXJAY3Njcy5pbyIsInZlbmRvckNvZGVzIjoiIn0.Y6EUqnwZOQVQqDkB1vCJSoAethLoi1qk3urIPFqriLOAkUjYKdia1hoYUkRxP261fiXxC_r5Xula1OlxuTv-ZA",
+								"type": "default"
+							},
+							{
+								"key": "DCCODE",
+								"value": "SST",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://qa.cscs-apps.com/cam/assets/{{Assetid}}",
+							"protocol": "https",
+							"host": [
+								"qa",
+								"cscs-apps",
+								"com"
+							],
+							"path": [
+								"cam",
+								"assets",
+								"{{Assetid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Assettypeid",
+			"value": ""
+		},
+		{
+			"key": "AssetTypepost",
+			"value": ""
+		},
+		{
+			"key": "Assetid",
+			"value": ""
+		}
+	]
+}
