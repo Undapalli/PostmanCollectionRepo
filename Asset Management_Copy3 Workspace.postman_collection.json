@@ -26,7 +26,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/asset-types",
+							"raw": "https://qa.cscs-apps.com/asset-types",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -105,7 +105,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/asset-types",
+							"raw": "https://qa.cscs-apps.com/asset-types",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -137,7 +137,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/asset-types/{{Assettypeid}}",
+							"raw": "https://qa.cscs-apps.com/asset-types/{{Assettypeid}}",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -145,7 +145,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"asset-types",
 								"{{Assettypeid}}"
 							]
@@ -215,7 +215,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/asset-types/{{Assettypeid}}",
+							"raw": "https://qa.cscs-apps.com/asset-types/{{Assettypeid}}",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -223,7 +223,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"asset-types",
 								"{{Assettypeid}}"
 							]
@@ -248,7 +248,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/asset-types/{{Assettypeid}}",
+							"raw": "https://qa.cscs-apps.com/asset-types/{{Assettypeid}}",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -256,7 +256,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"asset-types",
 								"{{Assettypeid}}"
 							]
@@ -286,7 +286,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/assets",
+							"raw": "https://qa.cscs-apps.com/assets",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -294,7 +294,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"assets"
 							]
 						}
@@ -326,7 +326,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"assets",
 								"{{Assetid}}"
 							]
@@ -382,7 +382,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/assets",
+							"raw": "https://qa.cscs-apps.com/assets",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -390,7 +390,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"assets"
 							]
 						}
@@ -423,7 +423,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/assets/{{Assetid}}",
+							"raw": "https://qa.cscs-apps.com/assets/{{Assetid}}",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -431,7 +431,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"assets",
 								"{{Assetid}}"
 							]
@@ -456,7 +456,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/assets/{{Assetid}}",
+							"raw": "https://qa.cscs-apps.com/assets/{{Assetid}}",
 							"protocol": "https",
 							"host": [
 								"qa",
@@ -464,7 +464,7 @@
 								"com"
 							],
 							"path": [
-								"cam",
+								
 								"assets",
 								"{{Assetid}}"
 							]
