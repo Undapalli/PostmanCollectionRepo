@@ -318,7 +318,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://qa.cscs-apps.com/cam/assets/{{Assetid}}",
+							"raw": "https://qa.cscs-apps.com/assets/{{Assetid}}",
 							"protocol": "https",
 							"host": [
 								"qa",
